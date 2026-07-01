@@ -1,0 +1,51 @@
+/* ============================================
+   DESIGN TOKENS — Alke Wallet
+   Modern Soft UI / Clean Fintech Theme
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* ── Color Palette ── */
+  --aw-bg-body: #f4f5f9;
+  --aw-bg-surface: #ffffff;
+  --aw-color-primary: #6c3ce0;
+  --aw-color-primary-hover: #5628c8;
+  --aw-color-primary-light: #ece5ff;
+  --aw-color-primary-gradient: linear-gradient(135deg, #7c4dff 0%, #6c3ce0 40%, #5628c8 100%);
+  --aw-color-success: #00c853;
+  --aw-color-success-light: #e8f9ef;
+  --aw-color-danger: #ff3d57;
+  --aw-color-danger-light: #fff0f2;
+  --aw-color-warning: #ffab00;
+
+  /* ── Text Colors ── */
+  --aw-text-main: #1a1d2e;
+  --aw-text-secondary: #5e6278;
+  --aw-text-muted: #9ca3b4;
+  --aw-text-white: #ffffff;
+
+  /* ── Borders & Radius ── */
+  --aw-border-color: #eef0f5;
+  --aw-radius-sm: 12px;
+  --aw-radius-md: 18px;
+  --aw-radius-lg: 24px;
+  --aw-radius-xl: 28px;
+  --aw-radius-pill: 9999px;
+
+  /* ── Shadows ── */
+  --aw-shadow-xs: 0 2px 8px rgba(108, 60, 224, 0.04);
+  --aw-shadow-sm: 0 4px 16px rgba(108, 60, 224, 0.06);
+  --aw-shadow-md: 0 8px 32px rgba(108, 60, 224, 0.08);
+  --aw-shadow-lg: 0 16px 48px rgba(108, 60, 224, 0.12);
+  --aw-shadow-btn: 0 6px 20px rgba(108, 60, 224, 0.28);
+  --aw-shadow-btn-hover: 0 10px 28px rgba(108, 60, 224, 0.35);
+
+  /* ── Fonts ── */
+  --aw-font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* ── Transitions ── */
+  --aw-transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --aw-transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --aw-transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Depositar Dinero - Alke Wallet</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <header class="aw-header mb-4">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="aw-logo">
+        <i class="fa-solid fa-wallet"></i>
+        <span>Alke Wallet</span>
+      </div>
+      <a href="menu.html" class="aw-back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Volver
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="aw-card">
+          <div class="text-center mb-4">
+            <div class="aw-page-icon">
+              <i class="fa-solid fa-money-bill-transfer"></i>
+            </div>
+            <h4 class="fw-bold mb-1">Depositar Fondos</h4>
+            <p style="color: var(--aw-text-muted); font-size: 0.88rem;">Carga saldo a tu cuenta de manera inmediata</p>
+          </div>
+
+          <div class="aw-info-strip mb-4">
+            <span style="color: var(--aw-text-muted); font-size: 0.85rem; font-weight: 600;">Tu saldo actual:</span>
+            <span class="fw-bold" id="current-balance-display">$0</span>
+          </div>
+
+          <form id="form-deposit" novalidate>
+            <div class="aw-input-group">
+              <label for="deposit-amount" class="aw-label">Monto a depositar (CLP)</label>
+              <div class="aw-input-wrap">
+                <span class="aw-input-icon fw-bold" style="font-size: 1.1rem;">$</span>
+                <input type="number" id="deposit-amount" class="aw-input has-icon fs-5" placeholder="0" min="1000" step="1000" required>
+              </div>
+              <div class="invalid-feedback text-danger small mt-1" id="deposit-amount-error"></div>
+              <span class="small mt-1 d-block" style="color: var(--aw-text-muted);"><i class="fa-solid fa-circle-info me-1"></i> Mínimo de depósito: $1.000 CLP</span>
+            </div>
+            <button type="submit" class="aw-btn-primary w-100 py-3 mt-2">Continuar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Confirmation Modal -->
+  <div class="modal fade" id="modal-confirm-deposit" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold"><i class="fa-solid fa-circle-question me-2" style="color: var(--aw-color-primary);"></i>Confirmar Depósito</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="mb-3" style="color: var(--aw-text-secondary);">Estás a punto de abonar dinero a tu billetera digital:</p>
+          <div class="aw-info-strip flex-column gap-2 align-items-stretch">
+            <div class="d-flex justify-content-between">
+              <span style="color: var(--aw-text-muted); font-size: 0.85rem;">Concepto:</span>
+              <span class="fw-semibold">Depósito Virtual Wallet</span>
+            </div>
+            <hr class="my-1" style="border-color: var(--aw-border-color);">
+            <div class="d-flex justify-content-between">
+              <span class="fw-bold" style="color: var(--aw-text-secondary);">Total a abonar:</span>
+              <span class="fw-bold fs-5" style="color: var(--aw-color-success);" id="modal-total-display">$0</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="aw-btn-secondary py-2 px-4" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="aw-btn-primary py-2 px-4" id="btn-confirm-submit">Confirmar depósito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/deposit.js"></script>
+</body>
+</html>

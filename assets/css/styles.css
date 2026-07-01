@@ -1,0 +1,951 @@
+/* ============================================
+   ALKE WALLET — Premium Soft UI Styles
+   ============================================ */
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background-color: var(--aw-bg-body) !important;
+  color: var(--aw-text-main);
+  font-family: var(--aw-font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--aw-text-main);
+  letter-spacing: -0.02em;
+}
+
+.text-muted { color: var(--aw-text-muted) !important; }
+.text-secondary-custom { color: var(--aw-text-secondary); }
+
+.aw-balance-num {
+  font-family: var(--aw-font-sans);
+  font-weight: 800;
+  font-size: 2.6rem;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.aw-balance-num.income { color: var(--aw-color-success); }
+.aw-balance-num.expense { color: var(--aw-color-danger); }
+
+
+/* ============================================
+   CARDS
+   ============================================ */
+.aw-card {
+  background-color: var(--aw-bg-surface);
+  border: 1px solid var(--aw-border-color) !important;
+  border-radius: var(--aw-radius-xl) !important;
+  box-shadow: var(--aw-shadow-sm) !important;
+  padding: 28px;
+  margin-bottom: 20px;
+  transition: transform var(--aw-transition-smooth), box-shadow var(--aw-transition-smooth);
+}
+
+.aw-card:hover {
+  box-shadow: var(--aw-shadow-md) !important;
+}
+
+/* Primary gradient card (balance) */
+.aw-card.primary {
+  background: var(--aw-color-primary-gradient);
+  border: none !important;
+  color: var(--aw-text-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative circle pattern on primary card */
+.aw-card.primary::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  animation: organicFloat1 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.aw-card.primary::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  animation: organicFloat2 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Organic blobs colliding in the center */
+@keyframes organicFloat1 {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    border-radius: 50% 50% 50% 50%;
+  }
+  35% { 
+    /* Moving towards center, becoming fluid */
+    transform: translate(-120px, 40px) scale(1.05);
+    border-radius: 60% 40% 40% 60%;
+  }
+  50% { 
+    /* The "Collision" / Squish effect */
+    transform: translate(-180px, 60px) scale(0.9, 1.15);
+    border-radius: 40% 60% 70% 30%;
+  }
+  75% { 
+    /* Rebounding out */
+    transform: translate(-60px, 80px) scale(1);
+    border-radius: 50% 50% 30% 70%;
+  }
+}
+
+@keyframes organicFloat2 {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    border-radius: 50% 50% 50% 50%;
+  }
+  35% { 
+    /* Moving towards center, becoming fluid */
+    transform: translate(90px, -30px) scale(1.05);
+    border-radius: 40% 60% 60% 40%;
+  }
+  50% { 
+    /* The "Collision" / Squish effect */
+    transform: translate(140px, -50px) scale(1.15, 0.9);
+    border-radius: 70% 30% 40% 60%;
+  }
+  75% { 
+    /* Rebounding out */
+    transform: translate(50px, -60px) scale(1);
+    border-radius: 30% 70% 50% 50%;
+  }
+}
+
+.aw-card.primary h1, .aw-card.primary h2,
+.aw-card.primary h3, .aw-card.primary h4,
+.aw-card.primary p, .aw-card.primary span {
+  color: var(--aw-text-white) !important;
+}
+
+/* Quick action cards */
+.aw-card.hover-scale {
+  cursor: pointer;
+  border: 1px solid var(--aw-border-color) !important;
+}
+
+.aw-card.hover-scale:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--aw-shadow-md) !important;
+  border-color: var(--aw-color-primary-light) !important;
+}
+
+.aw-card.hover-scale:active {
+  transform: translateY(-1px);
+}
+
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.aw-btn-primary {
+  background: var(--aw-color-primary-gradient) !important;
+  color: var(--aw-text-white) !important;
+  border: none !important;
+  border-radius: var(--aw-radius-pill) !important;
+  padding: 14px 32px !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  box-shadow: var(--aw-shadow-btn);
+  transition: all var(--aw-transition-smooth) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.aw-btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity var(--aw-transition-fast);
+}
+
+.aw-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--aw-shadow-btn-hover);
+}
+
+.aw-btn-primary:hover::after { opacity: 1; }
+
+.aw-btn-primary:active {
+  transform: translateY(-1px);
+  box-shadow: var(--aw-shadow-btn);
+}
+
+.aw-btn-secondary {
+  background-color: var(--aw-color-primary-light) !important;
+  color: var(--aw-color-primary) !important;
+  border: none !important;
+  border-radius: var(--aw-radius-pill) !important;
+  padding: 14px 32px !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem;
+  transition: all var(--aw-transition-smooth) !important;
+}
+
+.aw-btn-secondary:hover {
+  background-color: #ddd2ff !important;
+  transform: translateY(-2px);
+}
+
+
+/* ============================================
+   FORM INPUTS — Fixed icon overlap
+   ============================================ */
+.aw-input-group {
+  margin-bottom: 22px;
+}
+
+.aw-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--aw-text-secondary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Input wrapper for icon alignment */
+.aw-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.aw-input-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--aw-text-muted);
+  font-size: 0.95rem;
+  pointer-events: none;
+  z-index: 2;
+  transition: color var(--aw-transition-fast);
+}
+
+.aw-input {
+  width: 100%;
+  background-color: var(--aw-bg-body) !important;
+  border: 2px solid transparent !important;
+  border-radius: var(--aw-radius-md) !important;
+  padding: 16px 18px !important;
+  color: var(--aw-text-main) !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  font-family: var(--aw-font-sans);
+  transition: all var(--aw-transition-smooth) !important;
+  outline: none !important;
+}
+
+/* When input has an icon, add left padding */
+.aw-input.has-icon {
+  padding-left: 50px !important;
+}
+
+.aw-input::placeholder {
+  color: var(--aw-text-muted);
+  font-weight: 400;
+}
+
+.aw-input:focus {
+  background-color: var(--aw-bg-surface) !important;
+  border-color: var(--aw-color-primary) !important;
+  box-shadow: 0 0 0 5px rgba(108, 60, 224, 0.08) !important;
+}
+
+.aw-input:focus ~ .aw-input-icon,
+.aw-input-wrap:focus-within .aw-input-icon {
+  color: var(--aw-color-primary);
+}
+
+.aw-input.is-invalid {
+  border-color: var(--aw-color-danger) !important;
+  box-shadow: 0 0 0 5px rgba(255, 61, 87, 0.06) !important;
+}
+
+
+/* ============================================
+   TRANSACTION LIST
+   ============================================ */
+.aw-transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aw-transaction-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background-color: var(--aw-bg-surface);
+  border-radius: var(--aw-radius-lg);
+  border: 1px solid var(--aw-border-color);
+  transition: all var(--aw-transition-smooth);
+}
+
+/* Ensure the left side shrinks so text can truncate without pushing the amount out */
+.aw-transaction-row > .d-flex {
+  flex: 1;
+  min-width: 0;
+}
+
+.aw-transaction-row:hover {
+  border-color: var(--aw-color-primary-light);
+  box-shadow: var(--aw-shadow-xs);
+  transform: translateX(3px);
+}
+
+.aw-transaction-icon {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  border-radius: var(--aw-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-right: 14px;
+  transition: transform var(--aw-transition-bounce);
+}
+
+.aw-transaction-row:hover .aw-transaction-icon {
+  transform: scale(1.08);
+}
+
+.aw-transaction-icon.deposit  { background-color: var(--aw-color-success-light); color: var(--aw-color-success); }
+.aw-transaction-icon.withdraw { background-color: var(--aw-color-danger-light); color: var(--aw-color-danger); }
+.aw-transaction-icon.send     { background-color: var(--aw-color-danger-light); color: var(--aw-color-danger); }
+.aw-transaction-icon.receive  { background-color: var(--aw-color-success-light); color: var(--aw-color-success); }
+
+.aw-transaction-info { flex-grow: 1; min-width: 0; }
+
+.aw-transaction-title {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--aw-text-main);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aw-transaction-date {
+  font-size: 0.78rem;
+  color: var(--aw-text-muted);
+}
+
+.aw-transaction-amount {
+  font-weight: 700;
+  font-size: 0.98rem;
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+.aw-transaction-amount.plus  { color: var(--aw-color-success); }
+.aw-transaction-amount.minus { color: var(--aw-color-danger); }
+
+
+/* ============================================
+   BOTTOM NAVIGATION BAR
+   ============================================ */
+.aw-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--aw-bg-surface);
+  border-top: 1px solid var(--aw-border-color);
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0 14px 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.aw-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none !important;
+  color: var(--aw-text-muted) !important;
+  font-weight: 600;
+  font-size: 0.7rem;
+  transition: all var(--aw-transition-smooth);
+  padding: 4px 12px;
+  border-radius: var(--aw-radius-sm);
+  position: relative;
+}
+
+.aw-nav-item i {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+  transition: transform var(--aw-transition-bounce);
+}
+
+.aw-nav-item:hover {
+  color: var(--aw-color-primary) !important;
+}
+
+.aw-nav-item:hover i {
+  transform: translateY(-2px);
+}
+
+.aw-nav-item.active {
+  color: var(--aw-color-primary) !important;
+}
+
+.aw-nav-item.active::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: var(--aw-color-primary-gradient);
+  border-radius: 2px;
+}
+
+
+/* ============================================
+   LOGO
+   ============================================ */
+.aw-logo {
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.04em;
+  color: var(--aw-color-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aw-logo i {
+  font-size: 1.5rem;
+  background: var(--aw-color-primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+/* ============================================
+   LOGIN PAGE
+   ============================================ */
+.aw-login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(160deg, #f4f5f9 0%, #ece5ff 50%, #f4f5f9 100%);
+}
+
+.aw-login-box {
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--aw-bg-surface);
+  border-radius: var(--aw-radius-xl);
+  box-shadow: var(--aw-shadow-lg);
+  padding: 44px 40px;
+  border: 1px solid var(--aw-border-color);
+  position: relative;
+}
+
+.aw-login-box::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--aw-radius-xl);
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(108, 60, 224, 0.15), transparent 40%, transparent 60%, rgba(108, 60, 224, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
+.aw-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 2000;
+  background-color: var(--aw-bg-surface);
+  border-left: 4px solid var(--aw-color-primary);
+  border-radius: var(--aw-radius-md);
+  box-shadow: var(--aw-shadow-lg);
+  padding: 18px 22px;
+  display: none;
+  align-items: center;
+  gap: 14px;
+  animation: toastSlideIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: 380px;
+}
+
+@keyframes toastSlideIn {
+  from { transform: translateX(100px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+.aw-toast.success { border-left-color: var(--aw-color-success); }
+.aw-toast.danger  { border-left-color: var(--aw-color-danger); }
+
+
+/* ============================================
+   MODAL OVERRIDES
+   ============================================ */
+.modal-content {
+  border: none !important;
+  border-radius: var(--aw-radius-xl) !important;
+  box-shadow: var(--aw-shadow-lg) !important;
+  overflow: hidden;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--aw-border-color) !important;
+  padding: 22px 28px !important;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--aw-border-color) !important;
+  padding: 20px 28px !important;
+}
+
+.modal-backdrop.show { opacity: 0.25; }
+
+
+/* ============================================
+   AUTOCOMPLETE
+   ============================================ */
+.aw-autocomplete-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--aw-bg-surface);
+  border: 1px solid var(--aw-border-color);
+  border-radius: var(--aw-radius-md);
+  box-shadow: var(--aw-shadow-md);
+  z-index: 1000;
+  max-height: 220px;
+  overflow-y: auto;
+  display: none;
+  margin-top: 6px;
+}
+
+.aw-autocomplete-item {
+  padding: 14px 18px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--aw-border-color);
+  transition: background var(--aw-transition-fast);
+}
+
+.aw-autocomplete-item:last-child { border-bottom: none; }
+.aw-autocomplete-item:hover { background-color: var(--aw-color-primary-light); }
+
+.aw-autocomplete-item .name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--aw-text-main);
+}
+
+.aw-autocomplete-item .email {
+  font-size: 0.75rem;
+  color: var(--aw-text-muted);
+}
+
+
+/* ============================================
+   HEADER BAR
+   ============================================ */
+.aw-header {
+  background: var(--aw-bg-surface);
+  border-bottom: 1px solid var(--aw-border-color);
+  padding: 14px 0;
+  box-shadow: var(--aw-shadow-xs);
+}
+
+.aw-back-btn {
+  color: var(--aw-text-secondary) !important;
+  border: 1px solid var(--aw-border-color) !important;
+  border-radius: var(--aw-radius-pill) !important;
+  padding: 8px 20px !important;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none !important;
+  transition: all var(--aw-transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.aw-back-btn:hover {
+  border-color: var(--aw-color-primary) !important;
+  color: var(--aw-color-primary) !important;
+  background-color: var(--aw-color-primary-light) !important;
+}
+
+
+/* ============================================
+   QUICK ACTION ICON CIRCLES
+   ============================================ */
+.aw-action-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px auto;
+  font-size: 1.3rem;
+  background-color: var(--aw-color-primary-light);
+  color: var(--aw-color-primary);
+  transition: all var(--aw-transition-bounce);
+}
+
+.aw-card.hover-scale:hover .aw-action-icon {
+  background: var(--aw-color-primary-gradient);
+  color: var(--aw-text-white);
+  transform: scale(1.1);
+  box-shadow: var(--aw-shadow-btn);
+}
+
+
+/* ============================================
+   PAGE ICON HEADER (deposit, sendmoney)
+   ============================================ */
+.aw-page-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+  font-size: 1.5rem;
+  background: var(--aw-color-primary-gradient);
+  color: var(--aw-text-white);
+  box-shadow: var(--aw-shadow-btn);
+}
+
+
+/* ============================================
+   INFO BOX (balance strip)
+   ============================================ */
+.aw-info-strip {
+  background-color: var(--aw-bg-body);
+  border: 1px solid var(--aw-border-color);
+  border-radius: var(--aw-radius-md);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* ============================================
+   FILTER BUTTONS
+   ============================================ */
+.aw-filter-group {
+  display: flex;
+  border: 1px solid var(--aw-border-color);
+  border-radius: var(--aw-radius-pill);
+  overflow: hidden;
+}
+
+.aw-filter-btn {
+  background: none;
+  border: none;
+  padding: 8px 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--aw-text-muted);
+  cursor: pointer;
+  transition: all var(--aw-transition-fast);
+  font-family: var(--aw-font-sans);
+}
+
+.aw-filter-btn:hover { color: var(--aw-color-primary); }
+
+.aw-filter-btn.active {
+  background: var(--aw-color-primary-gradient);
+  color: var(--aw-text-white);
+}
+
+
+/* ============================================
+   USER AVATAR
+   ============================================ */
+.aw-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--aw-text-white);
+  background: var(--aw-color-primary-gradient);
+  box-shadow: 0 4px 12px rgba(108, 60, 224, 0.2);
+}
+
+
+/* ============================================
+   UTILITY
+   ============================================ */
+.aw-section-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--aw-text-main);
+}
+
+.aw-link-accent {
+  color: var(--aw-color-primary) !important;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: opacity var(--aw-transition-fast);
+}
+
+.aw-link-accent:hover { opacity: 0.7; }
+
+.aw-badge-info {
+  display: inline-block;
+  background-color: var(--aw-color-primary-light);
+  color: var(--aw-color-primary);
+  padding: 4px 12px;
+  border-radius: var(--aw-radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+
+/* ============================================
+   RESPONSIVE — Tablet (≤ 768px)
+   ============================================ */
+@media (max-width: 768px) {
+
+  body { font-size: 14px; }
+
+  /* Header */
+  .aw-header { padding: 10px 0; }
+
+  .aw-logo { font-size: 1.2rem; gap: 8px; }
+  .aw-logo i { font-size: 1.3rem; }
+
+  /* Balance Card */
+  .aw-balance-num { font-size: 2.1rem; }
+  .aw-card { padding: 22px; border-radius: var(--aw-radius-lg) !important; }
+  .aw-card.primary { padding: 28px 22px; }
+  .aw-card.primary::before { width: 150px; height: 150px; top: -40px; right: -40px; }
+  .aw-card.primary::after  { width: 100px; height: 100px; bottom: -20px; left: -20px; }
+
+  /* Quick Actions */
+  .aw-action-icon { width: 48px; height: 48px; font-size: 1.1rem; }
+
+  /* Page Icons */
+  .aw-page-icon { width: 58px; height: 58px; font-size: 1.3rem; }
+
+  /* Transaction rows */
+  .aw-transaction-icon { width: 40px; height: 40px; min-width: 40px; font-size: 1rem; margin-right: 12px; }
+  .aw-transaction-title { font-size: 0.88rem; }
+  .aw-transaction-amount { font-size: 0.92rem; }
+
+  /* Filter buttons */
+  .aw-filter-btn { padding: 7px 16px; font-size: 0.78rem; }
+
+  /* Inputs */
+  .aw-input { padding: 14px 16px !important; font-size: 0.9rem; }
+  .aw-input.has-icon { padding-left: 46px !important; }
+  .aw-input-icon { left: 16px; font-size: 0.9rem; }
+
+  /* Back button */
+  .aw-back-btn { padding: 6px 16px !important; font-size: 0.8rem; }
+
+  /* Avatar */
+  .aw-avatar { width: 38px; height: 38px; font-size: 0.9rem; }
+
+  /* Bottom bar */
+  .aw-bottom-bar { padding: 6px 0 12px 0; }
+  .aw-nav-item { font-size: 0.65rem; padding: 3px 8px; }
+  .aw-nav-item i { font-size: 1.15rem; margin-bottom: 3px; }
+
+  /* Login */
+  .aw-login-box { padding: 32px 28px; }
+  .aw-login-container { padding: 16px; }
+
+  /* Info strips */
+  .aw-info-strip { padding: 12px 16px; border-radius: var(--aw-radius-sm); }
+
+  /* Modals */
+  .modal-dialog { margin: 16px; }
+  .modal-content { border-radius: var(--aw-radius-lg) !important; }
+
+  /* Toast */
+  .aw-toast { right: 16px; left: 16px; max-width: none; }
+
+  /* Section titles */
+  .aw-section-title { font-size: 1rem; }
+}
+
+
+/* ============================================
+   RESPONSIVE — Mobile (≤ 480px)
+   ============================================ */
+@media (max-width: 480px) {
+
+  body { font-size: 13.5px; }
+
+  /* Header compact */
+  .aw-header { padding: 8px 0; }
+  .aw-logo { font-size: 1.05rem; gap: 6px; }
+  .aw-logo i { font-size: 1.15rem; }
+
+  /* Balance Card — mobile hero */
+  .aw-balance-num { font-size: 1.8rem; }
+  .aw-card { padding: 18px; margin-bottom: 14px; border-radius: var(--aw-radius-md) !important; }
+  .aw-card.primary { padding: 24px 18px; border-radius: var(--aw-radius-lg) !important; }
+  .aw-card.primary::before { width: 120px; height: 120px; top: -30px; right: -30px; }
+  .aw-card.primary::after  { width: 80px; height: 80px; bottom: -15px; left: -15px; }
+
+  /* Quick Actions — smaller */
+  .aw-action-icon { width: 44px; height: 44px; font-size: 1rem; margin-bottom: 8px; }
+  .aw-card.hover-scale { padding: 16px !important; }
+
+  /* Page Icons */
+  .aw-page-icon { width: 52px; height: 52px; font-size: 1.15rem; margin-bottom: 12px; }
+
+  /* Transactions — compact */
+  .aw-transaction-list { gap: 8px; }
+  .aw-transaction-row { padding: 12px 14px; border-radius: var(--aw-radius-md); }
+  .aw-transaction-icon { width: 36px; height: 36px; min-width: 36px; font-size: 0.9rem; margin-right: 10px; border-radius: 10px; }
+  .aw-transaction-title { font-size: 0.84rem; }
+  .aw-transaction-date { font-size: 0.72rem; }
+  .aw-transaction-amount { font-size: 0.88rem; margin-left: 8px; }
+
+  /* Filter group — full width */
+  .aw-filter-group { width: 100%; }
+  .aw-filter-btn { flex: 1; text-align: center; padding: 8px 10px; font-size: 0.75rem; }
+
+  /* Transactions header — stack on mobile */
+  .aw-card .d-flex.justify-content-between.flex-wrap {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  /* Inputs — compact */
+  .aw-input { padding: 13px 14px !important; font-size: 0.88rem; border-radius: var(--aw-radius-sm) !important; }
+  .aw-input.has-icon { padding-left: 42px !important; }
+  .aw-input-icon { left: 14px; font-size: 0.85rem; }
+  .aw-label { font-size: 0.75rem; margin-bottom: 6px; }
+  .aw-input-group { margin-bottom: 18px; }
+
+  /* Buttons — full width and compact */
+  .aw-btn-primary { padding: 13px 24px !important; font-size: 0.9rem; border-radius: var(--aw-radius-lg) !important; }
+  .aw-btn-secondary { padding: 13px 24px !important; font-size: 0.9rem; }
+
+  /* Back button */
+  .aw-back-btn { padding: 5px 12px !important; font-size: 0.75rem; gap: 4px; }
+
+  /* Avatar */
+  .aw-avatar { width: 34px; height: 34px; font-size: 0.85rem; }
+
+  /* Bottom bar — compact safe area */
+  .aw-bottom-bar {
+    padding: 5px 0 max(12px, env(safe-area-inset-bottom)) 0;
+  }
+  .aw-nav-item { font-size: 0.6rem; padding: 2px 6px; }
+  .aw-nav-item i { font-size: 1.05rem; margin-bottom: 2px; }
+  .aw-nav-item.active::before { width: 16px; height: 2px; top: -5px; }
+
+  /* Login — edge to edge feeling */
+  .aw-login-container { padding: 12px; }
+  .aw-login-box {
+    padding: 28px 22px;
+    border-radius: var(--aw-radius-lg);
+    box-shadow: var(--aw-shadow-md);
+  }
+  .aw-login-box::before { border-radius: var(--aw-radius-lg); }
+
+  /* Info strips */
+  .aw-info-strip { padding: 10px 14px; font-size: 0.85rem; }
+
+  /* Modals — nearly full width */
+  .modal-dialog { margin: 8px; }
+  .modal-header { padding: 16px 20px !important; }
+  .modal-body { padding: 20px !important; }
+  .modal-footer { padding: 14px 20px !important; }
+  .modal-footer .aw-btn-primary,
+  .modal-footer .aw-btn-secondary { flex: 1; }
+
+  /* Toast — full width */
+  .aw-toast { top: 12px; right: 12px; left: 12px; padding: 14px 16px; }
+
+  /* Section titles */
+  .aw-section-title { font-size: 0.95rem; }
+
+  /* Autocomplete */
+  .aw-autocomplete-box { border-radius: var(--aw-radius-sm); }
+  .aw-autocomplete-item { padding: 12px 14px; }
+  .aw-autocomplete-item .name { font-size: 0.85rem; }
+
+  /* Container override for edge-to-edge */
+  .container { padding-left: 16px !important; padding-right: 16px !important; }
+}
+
+
+/* ============================================
+   RESPONSIVE — Small Mobile (≤ 360px)
+   ============================================ */
+@media (max-width: 360px) {
+  .aw-balance-num { font-size: 1.5rem; }
+  .aw-card { padding: 14px; }
+  .aw-card.primary { padding: 20px 14px; }
+  .aw-action-icon { width: 38px; height: 38px; font-size: 0.9rem; }
+  .aw-page-icon { width: 46px; height: 46px; font-size: 1rem; }
+  .aw-login-box { padding: 24px 18px; }
+  .aw-nav-item { padding: 2px 4px; font-size: 0.55rem; }
+  .aw-nav-item i { font-size: 0.95rem; }
+  .container { padding-left: 12px !important; padding-right: 12px !important; }
+}
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movimientos - Alke Wallet</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <header class="aw-header mb-4">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="aw-logo">
+        <i class="fa-solid fa-wallet"></i>
+        <span>Alke Wallet</span>
+      </div>
+      <a href="menu.html" class="aw-back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Volver
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="aw-card">
+          <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+            <div>
+              <h4 class="fw-bold mb-1">Historial de Transacciones</h4>
+              <p class="mb-0" style="color: var(--aw-text-muted); font-size: 0.85rem;">Revisa todos los movimientos de tu cuenta</p>
+            </div>
+            
+            <!-- Custom Filter Buttons -->
+            <div class="aw-filter-group">
+              <button type="button" class="aw-filter-btn active" id="filter-all">Todos</button>
+              <button type="button" class="aw-filter-btn" id="filter-incomes">Ingresos</button>
+              <button type="button" class="aw-filter-btn" id="filter-expenses">Egresos</button>
+            </div>
+          </div>
+
+          <div class="aw-info-strip mb-4">
+            <span style="color: var(--aw-text-muted); font-size: 0.85rem; font-weight: 600;">Saldo a la fecha:</span>
+            <span class="fw-bold fs-5" id="transactions-balance-display">$0</span>
+          </div>
+
+          <div class="aw-transaction-list" id="transactions-list-container">
+            <div class="text-center py-5" id="no-transactions-placeholder" style="display: none; color: var(--aw-text-muted);">
+              <i class="fa-solid fa-receipt d-block mb-3" style="font-size: 3rem; opacity: 0.3;"></i>
+              <span class="d-block fw-bold">No se encontraron movimientos</span>
+              <span class="small">Realiza depósitos o transferencias para ver el historial.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/transactions.js"></script>
+</body>
+</html>

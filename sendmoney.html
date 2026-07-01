@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviar Dinero - Alke Wallet</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <header class="aw-header mb-4">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="aw-logo">
+        <i class="fa-solid fa-wallet"></i>
+        <span>Alke Wallet</span>
+      </div>
+      <a href="menu.html" class="aw-back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Volver
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="aw-card">
+          <div class="text-center mb-4">
+            <div class="aw-page-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </div>
+            <h4 class="fw-bold mb-1">Enviar Dinero</h4>
+            <p style="color: var(--aw-text-muted); font-size: 0.88rem;">Realiza transferencias rápidas e instantáneas</p>
+          </div>
+
+          <div class="aw-info-strip mb-4">
+            <span style="color: var(--aw-text-muted); font-size: 0.85rem; font-weight: 600;">Saldo disponible:</span>
+            <span class="fw-bold" id="current-balance-display">$0</span>
+          </div>
+
+          <form id="form-send" novalidate autocomplete="off">
+            <!-- Contact Search -->
+            <div class="aw-input-group position-relative">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label for="contact-search" class="aw-label mb-0">Buscar Contacto</label>
+                <a href="#" class="aw-link-accent small" id="btn-open-add-contact">
+                  <i class="fa-solid fa-plus-circle me-1"></i>Nuevo contacto
+                </a>
+              </div>
+              <div class="aw-input-wrap">
+                <i class="fa-solid fa-magnifying-glass aw-input-icon"></i>
+                <input type="text" id="contact-search" class="aw-input has-icon" placeholder="Escribe nombre o correo..." required>
+              </div>
+              <div class="aw-autocomplete-box" id="autocomplete-results"></div>
+              <div class="invalid-feedback text-danger small mt-1" id="contact-search-error"></div>
+            </div>
+
+            <!-- Recipient Details (hidden until selected) -->
+            <div class="aw-info-strip flex-column align-items-stretch gap-1 mb-4 d-none" id="recipient-details-box">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <span class="d-block small" style="color: var(--aw-text-muted);">Destinatario seleccionado:</span>
+                  <span class="fw-bold" id="recipient-name-display">Nombre</span>
+                  <span class="d-block small mt-1" style="color: var(--aw-text-muted);" id="recipient-email-display">correo@ejemplo.com</span>
+                  <span class="aw-badge-info mt-1" id="recipient-alias-display">alias.wallet</span>
+                </div>
+                <button type="button" class="btn btn-sm btn-link text-decoration-none fw-bold p-0" style="color: var(--aw-color-danger);" id="btn-clear-recipient">
+                  Cambiar
+                </button>
+              </div>
+            </div>
+
+            <!-- Amount -->
+            <div class="aw-input-group">
+              <label for="send-amount" class="aw-label">Monto a transferir (CLP)</label>
+              <div class="aw-input-wrap">
+                <span class="aw-input-icon fw-bold" style="font-size: 1.1rem;">$</span>
+                <input type="number" id="send-amount" class="aw-input has-icon fs-5" placeholder="0" min="1" required>
+              </div>
+              <div class="invalid-feedback text-danger small mt-1" id="send-amount-error"></div>
+            </div>
+
+            <button type="submit" class="aw-btn-primary w-100 py-3 mt-2" id="btn-send-submit">Continuar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Confirm Transfer Modal -->
+  <div class="modal fade" id="modal-confirm-send" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold"><i class="fa-solid fa-circle-question me-2" style="color: var(--aw-color-primary);"></i>Confirmar Transferencia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="mb-3" style="color: var(--aw-text-secondary);">Verifica los datos de tu transferencia:</p>
+          <div class="aw-info-strip flex-column gap-2 align-items-stretch">
+            <div>
+              <span class="d-block small" style="color: var(--aw-text-muted);">Destinatario:</span>
+              <span class="fw-bold" id="modal-recipient-name">Nombre</span>
+            </div>
+            <div>
+              <span class="d-block small" style="color: var(--aw-text-muted);">Correo:</span>
+              <span class="fw-semibold" id="modal-recipient-email">correo@ejemplo.com</span>
+            </div>
+            <hr class="my-1" style="border-color: var(--aw-border-color);">
+            <div class="d-flex justify-content-between">
+              <span class="fw-bold" style="color: var(--aw-text-secondary);">Total a transferir:</span>
+              <span class="fw-bold fs-5" style="color: var(--aw-color-danger);" id="modal-send-total">$0</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="aw-btn-secondary py-2 px-4" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="aw-btn-primary py-2 px-4" id="btn-confirm-send-submit">Confirmar envío</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Contact Modal -->
+  <div class="modal fade" id="modal-add-contact" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold"><i class="fa-solid fa-user-plus me-2" style="color: var(--aw-color-primary);"></i>Agregar Nuevo Contacto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form id="form-add-contact" novalidate>
+          <div class="modal-body p-4">
+            <div class="aw-input-group">
+              <label for="contact-name" class="aw-label">Nombre Completo</label>
+              <input type="text" id="contact-name" class="aw-input" placeholder="Ej: María López" required>
+              <div class="invalid-feedback text-danger small mt-1" id="contact-name-error"></div>
+            </div>
+            <div class="aw-input-group">
+              <label for="contact-email" class="aw-label">Correo Electrónico</label>
+              <input type="email" id="contact-email" class="aw-input" placeholder="Ej: maria@gmail.com" required>
+              <div class="invalid-feedback text-danger small mt-1" id="contact-email-error"></div>
+            </div>
+            <div class="aw-input-group mb-0">
+              <label for="contact-alias" class="aw-label">Alias</label>
+              <input type="text" id="contact-alias" class="aw-input" placeholder="Ej: maria.lopez.wallet" required>
+              <div class="invalid-feedback text-danger small mt-1" id="contact-alias-error"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="aw-btn-secondary py-2 px-4" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="aw-btn-primary py-2 px-4">Guardar contacto</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/sendmoney.js"></script>
+</body>
+</html>
