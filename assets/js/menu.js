@@ -4,29 +4,25 @@
  */
 
 $(document).ready(() => {
-  // 1. Verify session (done automatically in App, but let's grab user data)
   const user = App.currentUser;
-  if (!user) return; // App will redirect to login.html
+  if (!user) return; 
 
-  // 2. Render user profile info
+  // Renderizamos los datos de cabecera y calculamos un número de cuenta ficticio
   $('#user-display-name').text(user.name);
   $('#user-avatar').text(user.name.charAt(0).toUpperCase());
   
-  // Format simulated account number based on user ID numeric part or simple hash
   const accountNum = `AW-${user.id.replace('u-', '')}-${user.email.length * 7}`;
   $('#user-account-number').text(accountNum);
 
-  // 3. Render Balance
   $('#wallet-balance').text(App.formatCurrency(user.balance));
 
-  // 4. Load recent transactions (max 3)
+  // Limitamos a los 3 últimos movimientos para no saturar el dashboard
   const transactions = WalletStorage.getTransactions();
   const container = $('#recent-transactions-container');
 
   if (transactions.length === 0) {
     $('#no-transactions-placeholder').show();
   } else {
-    // Show only the 3 most recent transactions on the dashboard
     const recent = transactions.slice(0, 3);
     
     const html = recent.map(tx => {
@@ -88,6 +84,5 @@ $(document).ready(() => {
     container.append(html);
   }
 
-  // 5. Inject bottom navigation bar (active page: 'menu')
   App.injectBottomBar('menu');
 });

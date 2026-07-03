@@ -7,7 +7,6 @@ $(document).ready(() => {
   const user = App.currentUser;
   if (!user) return; // Auth checks handle redirects
 
-  // 1. Render Current Balance
   const updateBalanceDisplay = () => {
     $('#current-balance-display').text(App.formatCurrency(user.balance));
   };
@@ -17,7 +16,6 @@ $(document).ready(() => {
   const sendConfirmModal = new bootstrap.Modal(document.getElementById('modal-confirm-send'));
   const addContactModal = new bootstrap.Modal(document.getElementById('modal-add-contact'));
 
-  // 2. Open Add Contact Modal trigger
   $('#btn-open-add-contact').on('click', (e) => {
     e.preventDefault();
     $('#form-add-contact')[0].reset();
@@ -26,7 +24,7 @@ $(document).ready(() => {
     addContactModal.show();
   });
 
-  // 3. Autocomplete Search Contacts
+  // Lógica de autocompletado: filtra contactos en tiempo real mientras el usuario escribe
   $('#contact-search').on('input', function() {
     const query = $(this).val().toLowerCase().trim();
     const resultsBox = $('#autocomplete-results');
@@ -34,7 +32,7 @@ $(document).ready(() => {
 
     if (query.length < 1) return;
 
-    // Load user contacts
+
     const contacts = WalletStorage.getContacts();
     
     // Filter matches
@@ -101,7 +99,7 @@ $(document).ready(() => {
     return regex.test(email);
   };
 
-  // 4. Form Submit Transfer
+  // Validación de la transferencia
   $('#form-send').on('submit', (e) => {
     e.preventDefault();
     $('#contact-search-error').text('').hide();
@@ -181,7 +179,7 @@ $(document).ready(() => {
     }
   });
 
-  // 5. Add Contact Logic Submit
+  // Creación de un nuevo contacto de manera rápida
   $('#form-add-contact').on('submit', (e) => {
     e.preventDefault();
     $('.invalid-feedback').text('').hide();
@@ -232,6 +230,5 @@ $(document).ready(() => {
     }
   });
 
-  // 6. Inject navigation bottom bar (active page: 'send')
   App.injectBottomBar('send');
 });

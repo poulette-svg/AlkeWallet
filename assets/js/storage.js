@@ -4,7 +4,7 @@
  */
 
 const WalletStorage = (() => {
-  // Key names in LocalStorage
+  // Claves para el manejo estructurado del LocalStorage
   const KEYS = {
     USERS: 'aw_users',
     TRANSACTIONS: 'aw_transactions',
@@ -31,7 +31,7 @@ const WalletStorage = (() => {
     }
   };
 
-  // Initialize seed data if empty
+  // Poblamos el storage con datos iniciales si es la primera vez que se abre la app
   const initSeedData = () => {
     const users = read(KEYS.USERS);
     if (users.length === 0) {
@@ -72,11 +72,10 @@ const WalletStorage = (() => {
     }
   };
 
-  // Run initialization
   initSeedData();
 
   return {
-    // Session management
+    // Métodos de autenticación
     getCurrentUser: () => {
       const sessionUserId = localStorage.getItem(KEYS.SESSION);
       if (!sessionUserId) return null;
@@ -121,7 +120,7 @@ const WalletStorage = (() => {
       return newUser;
     },
 
-    // Financial Operations
+    // Operaciones financieras transaccionales
     deposit: (amount) => {
       const currentUser = WalletStorage.getCurrentUser();
       if (!currentUser) throw new Error('No hay una sesión de usuario activa.');
@@ -239,7 +238,7 @@ const WalletStorage = (() => {
       return newTransaction;
     },
 
-    // Query Data
+    // Consultas y listados
     getTransactions: () => {
       const currentUser = WalletStorage.getCurrentUser();
       if (!currentUser) return [];

@@ -7,13 +7,12 @@ $(document).ready(() => {
   const user = App.currentUser;
   if (!user) return; // Auth checks handle redirects
 
-  // 1. Render Current Balance
   $('#transactions-balance-display').text(App.formatCurrency(user.balance));
 
   let currentFilter = 'all'; // 'all', 'incomes', 'expenses'
   const transactions = WalletStorage.getTransactions();
 
-  // 2. Render function based on current filter
+  // Generamos el historial dinámicamente aplicando los filtros seleccionados
   const renderTransactions = () => {
     const container = $('#transactions-list-container');
     
@@ -95,7 +94,6 @@ $(document).ready(() => {
     container.append(html);
   };
 
-  // 3. Set Filter Buttons handlers
   $('#filter-all').on('click', function() {
     $('.aw-filter-btn').removeClass('active');
     $(this).addClass('active');
@@ -117,9 +115,6 @@ $(document).ready(() => {
     renderTransactions();
   });
 
-  // 4. Initial Render
   renderTransactions();
-
-  // 5. Inject bottom bar (active page: 'transactions')
   App.injectBottomBar('transactions');
 });
