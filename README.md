@@ -1,4 +1,4 @@
-# Alke Wallet 💸
+# Alke Wallet 
 
 Hola, este es mi proyecto final para el Módulo 2 del bootcamp. Es el front-end de una billetera digital (tipo fintech) diseñada para ser súper fácil de usar y segura desde la vista del usuario. 
 
