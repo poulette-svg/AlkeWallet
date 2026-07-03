@@ -18,7 +18,6 @@ const WalletStorage = (() => {
       const data = localStorage.getItem(key);
       return data ? JSON.parse(data) : defaultValue;
     } catch (e) {
-      console.error(`Error reading ${key} from localStorage`, e);
       return defaultValue;
     }
   };
@@ -28,7 +27,7 @@ const WalletStorage = (() => {
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch (e) {
-      console.error(`Error writing ${key} to localStorage`, e);
+      // Ignored for now
     }
   };
 
@@ -70,8 +69,6 @@ const WalletStorage = (() => {
         { id: 't-3', userId: 'u-1', type: 'receive', amount: 120000, counterpart: 'Carlos Gómez', date: '2026-06-28T09:00:00.000Z' }
       ];
       write(KEYS.TRANSACTIONS, defaultTransactions);
-
-      console.log('Seed data successfully initialized.');
     }
   };
 
