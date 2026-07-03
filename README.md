@@ -15,11 +15,22 @@ La idea principal de este proyecto fue llevar a la práctica todo lo que aprendi
 Decidí mantener las cosas simples pero efectivas, usando tecnologías clave sin depender de frameworks pesados para afianzar bien las bases:
 - **HTML5 & CSS3**: Para maquetar todo. Usé variables globales (Custom Properties) en CSS para mantener la paleta de colores muy consistente con la temática de las apps financieras.
 - **JavaScript (Vanilla)**: Aquí está la magia. Para simular la base de datos usé `LocalStorage`, así la app realmente guarda tus depósitos, transferencias, contactos y saldo mientras navegas o recargas la página.
-- **Bootstrap 5**: Me apoyé bastante en sus modales, alertas y grillas para agilizar el diseño responsivo (¡te aseguro que se ve genial en el celular!).
+- **Bootstrap 5**: Me apoyé bastante en sus modales, alertas y grillas para agilizar el diseño responsivo.
 - **jQuery**: Lo utilicé puntualmente para ciertas animaciones sutiles, manejar el DOM más rápido y hacer funcionar el autocompletado de contactos en tiempo real.
 
 ## Vistas del proyecto
-*(Aquí pondré las capturas cuando lo suba a mi portafolio)*
+<img width="1919" height="944" alt="image" src="https://github.com/user-attachments/assets/06c2387b-aa0d-418c-8664-2ca64d80fab8" />
+<img width="1917" height="944" alt="image" src="https://github.com/user-attachments/assets/7f586a46-bc1d-4b90-ace2-03b2d138f9bb" />
+<img width="1917" height="944" alt="image" src="https://github.com/user-attachments/assets/6e2ebd86-c38a-463f-b3b1-21318d674121" />
+<img width="398" height="857" alt="image" src="https://github.com/user-attachments/assets/a06834bd-c310-4555-aa8b-401520c24dad" />
+<img width="398" height="856" alt="image" src="https://github.com/user-attachments/assets/d737f5c6-85bc-4031-9c2a-bca0e8df9d9e" />
+
+
+
+
+
+
+
 
 - Login / Registro
 - Dashboard principal
@@ -40,4 +51,3 @@ El proyecto cumple su objetivo, pero me quedé con ganas de implementar un par d
 - Conectar todo esto a un Backend de verdad con una base de datos real.
 - Modo oscuro. Ya dejé las bases listas con variables en CSS, solo sería armar el switch.
 
-¡Espero que te guste el resultado! 🚀
